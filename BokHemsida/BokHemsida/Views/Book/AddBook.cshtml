@@ -1,0 +1,48 @@
+﻿@model BookViewModel
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<form asp-controller="Book" method="post" class="form">
+    <div class="form-group row">
+        <label for="Name" class="label">Titel:</label>
+        <div class="col-sm-4">
+            <input type="text" id="Title" name="Title" class="form-control" required />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Description" class="label">Beskrivning:</label>
+        <div class="col-sm-4">
+            <textarea id="Description" name="Description" class="form-control" required></textarea>
+        </div>
+    </div>@* 
+    <div class="form-group row">
+        <label for="AuthorId" class="label">FörfattarId:</label>
+        <div class="col-sm-4">
+            <input type="int" id="AuthorId" name="AuthorId" class="form-control" required />
+        </div>
+    </div> *@
+    <div class="form-group row">
+        <label for="Rating" class="label">Betyg:</label>
+        <div class="col-sm-4">
+            <input type="number" id="Rating" name="Rating" class="form-control" required />
+        </div>
+    </div>
+    <input type="hidden" name="UserId" value="@Model.UserId" />
+    @* Lägg till flerval för Authors *@
+    <div class="form-group row">
+        <div class="label">
+            <label for="AuthorId">Författare:</label>
+        </div>
+        <div class="dropdown-form">
+            <select class="form-control" asp-for="AuthorId" asp-items="(Model.Authors ?? Enumerable.Empty<Author>()).Select(u => new SelectListItem { Value = u.Id.ToString(), Text = u.FullName })">
+                <option value="">Välj författare</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="form-button">
+            <button type="submit" class="btn btn-primary" name="SubmitButton" value="AddBook">Skicka för att lägga till bok</button>
+        </div>
+    </div>
+</form>
+
+<p>Om din författare saknas i listan lägg till den först <a asp-action="AddAuthor" asp-controller="Author">här!</a></p>

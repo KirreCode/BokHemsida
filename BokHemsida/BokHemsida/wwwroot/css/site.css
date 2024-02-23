@@ -1,0 +1,77 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+
+body {
+    margin-bottom: 60px;
+    background-image: url('IMG_8211.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.full-container {
+    justify-content: space-between;
+    align-items: center;
+    background-color: floralwhite;
+    border: 5px solid black;
+    padding: 10px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.object-block {
+    display: grid;
+    margin: 1em 0em 1em 0em;
+    background-color: navajowhite;
+    grid-column: 1;
+    grid-row: 2;
+    text-align: center;
+    border: 5px solid brown;
+    padding: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    grid-row: span 1;
+    grid-column: span 1;
+    width: calc(100% - 10px);
+    justify-self: center; /* Center the content horizontally */
+    align-self: start;
+    /*grid-column: span 1;*/
+}
+
+/*.object-block {
+    background-color: #EED9C4;
+    padding: 0,5em;
+    border-color: brown;
+    border-width: 1em;
+}*/
+
+a {
+    color: #A67B5B;
+}
+
+a.hover {
+    color: darkred;
+}

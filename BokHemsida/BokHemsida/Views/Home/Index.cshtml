@@ -1,0 +1,49 @@
+﻿@model List<Book>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="full-container">
+    <div class="text-center">
+        <h1 class="display-4">Books and More Books</h1>
+        <p>En sida för böcker</p>
+    </div>
+
+    <h3>Nyligen lästa böcker</h3>
+
+    <div class="grid-container">
+        @foreach (var book in Model)
+        {
+            <div class="object-block">
+                <p>@book.Title</p>
+                <p>Skriven av: @book.Author.FullName</p>
+                @* <p>Rating: @book.UserBook.Rating</p> *@
+                <a asp-action="Book" asp-controller="Book" asp-route-id="@book.Id">
+                    <p>Till boken!</p>
+                </a>
+                @* <div class="grid-item item1">
+            <a asp-action="OtherProfile" asp-controller="User" asp-route-id="@cv.Id">
+            <p>@user.Firstname @user.Lastname</p>
+            </a>
+            <p>Telefon: @cv.User.PhoneNumber</p>
+            @foreach (var item in cv.Education)
+            {
+            <p>@item.Name</p>
+            }
+            @foreach (var item in cv.Experiences)
+            {
+            <p>@item.Name</p>
+            }
+            <a asp-action="FullCv" asp-controller="Cv" asp-route-id="@cv.Id">Hela Cv:et</a>
+            </div> *@
+            </div>
+        }
+    </div>
+
+    @* <div class="profile-container">
+    <div class="profile-details">
+    <h3>@Model.Firstname's profil</h3>
+    <p>Förnamn: @Model.Firstname</p>
+    <p>Efternamn: @Model.Lastname</p>
+    </div>
+    </div> *@
+</div>

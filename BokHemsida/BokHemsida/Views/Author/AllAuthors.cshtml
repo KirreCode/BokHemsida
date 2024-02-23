@@ -1,0 +1,18 @@
+﻿@model List<Author>
+
+<div class="full-container">
+    <h2>Alla författare</h2>
+    <div class="grid-container">
+        @foreach (var author in Model)
+        {
+            <div class="object-block">
+                <p>Namn: @author.FullName</p>
+                <p>Beskrivning: @author.Description</p>
+                <p>Födelsedatum: @author.BirthDate</p>
+                <a asp-action="ChangeAuthor" asp-controller="Author" asp-route-id="@author.Id">Ändra författare</a>
+            </div>
+        }
+        <br />
+    </div>
+    <a asp-action="AddAuthor" asp-controller="Author">Lägg till ny författare</a>
+</div>

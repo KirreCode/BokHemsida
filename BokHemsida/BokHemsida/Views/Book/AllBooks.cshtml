@@ -1,0 +1,17 @@
+﻿@model List<Book>
+<div class="full-container">
+    <h2>Alla böcker</h2>
+    <div class="grid-container">
+        @foreach (var book in Model)
+        {
+            <div class="object-block">
+                <p>@book.Title</p>
+                <p>Författare: @book.Author.FullName</p>
+                <p>Beskrivning: @book.Description</p>
+                <a asp-action="ChangeBook" asp-controller="Book" asp-route-id="@book.Id">Ändra bok</a>
+            </div>
+        }
+    </div>
+
+    <a asp-action="AddBook" asp-controller="Book">Lägg till ny författare</a>
+</div>

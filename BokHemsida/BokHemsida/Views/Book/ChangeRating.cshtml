@@ -1,0 +1,20 @@
+﻿@model UserBook
+
+<h3>@Model.Book.Title</h3>
+<div asp-validation-summary="All" class="text-danger"></div>
+<form asp-controller="Book" asp-action="ChangeRating" method="post" class="form">
+    <div class="form-group row">
+        <label asp-for="Rating" class="">Rating av 10</label>
+        <div class="col-sm-4">
+            <input asp-for="Rating" type="text" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="form-button">
+            <input type="submit" value="Uppdatera" class="btn btn-primary" />
+        </div>
+    </div>
+    <input type="hidden" asp-formaction="UserId" />
+    <input type="hidden" asp-formaction="BookId" />
+    <input type="hidden" asp-formaction="DateAdded" />
+</form>

@@ -1,0 +1,27 @@
+﻿@model User
+
+<div class="full-container">
+        
+    <h2>Min profil</h2>
+    <div>
+        <p>Namn: @Model.Firstname @Model.Lastname</p>
+        <p>Användarnamn: @Model.UserName</p>
+    </div>
+        
+
+    <h2>Mina lästa böcker</h2>
+    <div class="grid-container">
+
+        @foreach (var book in Model.Books)
+        {
+            <div class="object-block">
+                <p>@book.Book.Title</p>
+                <p>@book.Book.Author.FullName</p>
+                <p>@book.Book.Description</p>
+                <a asp-action="ChangeBook" asp-controller="Book" asp-route-id="@book.Book.Id">Ändra bok</a>
+                @* <a asp-action="DeleteBook" asp-controller="Book" asp-route-id="@book.Book.Id">Ta bort bok från mina lästa böcker</a> *@
+            </div>
+        }
+    </div>
+    <a asp-action="AddBook" asp-controller="Book">Lägg till ny bok</a>
+</div>
