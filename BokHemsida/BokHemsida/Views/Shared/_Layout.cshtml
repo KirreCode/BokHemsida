@@ -34,23 +34,33 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="MyProfile">Min sida</a>
  			                }
                         </li>
-                    </ul>
-                    <div class="grid-item item104">
-                        @*Ändrar vad som visas i itemet beroende på om man är inloggad eller inte*@
 
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <form method="post" asp-controller="Account" asp-action="LogOut">
-                                <button type="submit" class="log-btn" id="btnLog">Logga ut</button>
-                            </form>
-                        }
-                        else
-                        {
-                            <form asp-action="LogIn" asp-controller="Account" method="get">
-                                <button type="submit" class="log-btn" id="btn-Log">Logga in</button>
-                            </form>
-                        }
-                    </div>
+                        <li>
+                            <div>
+                                <form id="searchForm" action="@Url.Action("Search", "Home")" method="get">
+                                    @* <label for="search">Sök efter bok, författare eller användare:</label> *@
+                                    <input type="text" id="search" name="search" />
+                                    <button type="submit" class="btn btn-search">Sök</button>
+                                </form>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <form method="post" asp-controller="Account" asp-action="LogOut">
+                                        <button type="submit" class="log-btn" id="btnLog">Logga ut</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form asp-action="LogIn" asp-controller="Account" method="get">
+                                        <button type="submit" class="log-btn" id="btn-Log">Logga in</button>
+                                    </form>
+                                }
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>

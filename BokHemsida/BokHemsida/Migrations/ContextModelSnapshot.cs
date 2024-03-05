@@ -33,11 +33,10 @@ namespace BokHemsida.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateOnly>("BirthDate")
+                    b.Property<DateOnly?>("BirthDate")
                         .HasColumnType("date");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullName")
@@ -52,9 +51,23 @@ namespace BokHemsida.Migrations
                         new
                         {
                             Id = 1,
-                            BirthDate = new DateOnly(1, 1, 1),
+                            BirthDate = new DateOnly(1965, 7, 31),
                             Description = "Brittisk författare känd för att ha skrivit Harry Potter-böckerna",
-                            FullName = "J. K. Rowling"
+                            FullName = "J.K. Rowling"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BirthDate = new DateOnly(1892, 1, 3),
+                            Description = "Fantasy-pionjär som har skrivit Sagan om Ringen-böckerna",
+                            FullName = "J.R.R Tolkien"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BirthDate = new DateOnly(1982, 6, 2),
+                            Description = "Svensk författare mest känd för att ha skrivit En man som heter Ove",
+                            FullName = "Fredrik Backman"
                         });
                 });
 
@@ -89,6 +102,20 @@ namespace BokHemsida.Migrations
                             AuthorId = 1,
                             Description = "Harry och hans vänner är ute på nya äventyr",
                             Title = "Harry Potter och fenixorden"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AuthorId = 2,
+                            Description = "Berättelsen om härskarringen",
+                            Title = "Sagan om Ringen"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AuthorId = 3,
+                            Description = "Den tredje boken i BjörnstadsTrilogin",
+                            Title = "Vinnarna"
                         });
                 });
 
@@ -174,7 +201,7 @@ namespace BokHemsida.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9eeea0db-3da0-47c3-b45f-8c7291cedc30",
+                            ConcurrencyStamp = "802f69d8-c0f9-492c-8446-97f49a1a4238",
                             EmailConfirmed = false,
                             Firstname = "Glenn",
                             Lastname = "Glennartsson",
@@ -182,7 +209,7 @@ namespace BokHemsida.Migrations
                             PasswordHash = "Password!",
                             PhoneNumberConfirmed = false,
                             Private = false,
-                            SecurityStamp = "22e0e446-72d8-4584-8d70-2392921f65de",
+                            SecurityStamp = "83e8abbc-45b8-403a-8c49-6333537e7294",
                             TwoFactorEnabled = false,
                             UserName = "Glenny"
                         });
@@ -202,6 +229,9 @@ namespace BokHemsida.Migrations
                     b.Property<int?>("Rating")
                         .HasColumnType("int");
 
+                    b.Property<string>("Review")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("BookId", "UserId");
 
                     b.HasIndex("UserId");
@@ -214,7 +244,8 @@ namespace BokHemsida.Migrations
                             BookId = 1,
                             UserId = "1",
                             DateAdded = new DateOnly(2005, 1, 1),
-                            Rating = 7
+                            Rating = 7,
+                            Review = "Jag tyckte att boken var spännande"
                         });
                 });
 
@@ -354,7 +385,7 @@ namespace BokHemsida.Migrations
             modelBuilder.Entity("BokHemsida.Models.Book", b =>
                 {
                     b.HasOne("BokHemsida.Models.Author", "Author")
-                        .WithMany()
+                        .WithMany("Books")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -430,6 +461,11 @@ namespace BokHemsida.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("BokHemsida.Models.Author", b =>
+                {
+                    b.Navigation("Books");
                 });
 
             modelBuilder.Entity("BokHemsida.Models.Book", b =>

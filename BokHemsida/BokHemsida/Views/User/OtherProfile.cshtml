@@ -1,23 +1,22 @@
 ﻿@model User
 
-<div class="head-block">
+<div class="full-container">
+    <h2>@Model.Firstname's profil</h2>
 
+    Namn: @Model.Firstname @Model.Lastname
+
+    Användarnamn: @Model.UserName
+
+
+    <h2>@Model.Firstname's lästa böcker</h2>
+
+    @foreach (var book in Model.Books)
+    {
+        <div class="object-block">
+            <p>@book.Book.Title</p>
+            <p>@book.Book.Author.FullName</p>
+            <p>@book.Book.Description</p>
+            <p>@book.Rating/10</p>
+        </div>
+    }
 </div>
-<h2>@Model.Firstname's profil</h2>
-
-Namn: @Model.Firstname @Model.Lastname
-
-Användarnamn: @Model.UserName
-
-
-<h2>@Model.Firstname's lästa böcker</h2>
-
-@foreach (var book in Model.Books)
-{
-    <div class="object-block">
-        <p>@book.Book.Title</p>
-        <p>@book.Book.Author.FullName</p>
-        <p>@book.Book.Description</p>
-        <p>@book.Rating/10</p>
-    </div>
-}

@@ -1,6 +1,8 @@
 using BokHemsida.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace BokHemsida.Controllers
 {
@@ -25,6 +27,42 @@ namespace BokHemsida.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult Search(string search)
+        {
+
+            List<User> matchedUsers = new List<User>();
+            List<Book> matchedBooks = new List<Book>();
+            List<Author> matchedAuthors = new List<Author>();
+
+            if (string.IsNullOrEmpty(search))
+            {
+                return RedirectToAction("Index");
+            }
+
+            matchedUsers = _context.Users
+            .Where(user =>
+                (user.Firstname.Contains(search) || user.Lastname.Contains(search)))
+            .Select(user => user).ToList();
+
+            matchedBooks = _context.Books
+            .Where(book =>
+                (book.Title.Contains(search)))
+            .Select(book => book).ToList();
+
+            matchedAuthors = _context.Authors
+            .Where(author =>
+                (author.FullName.Contains(search)))
+            .Select(author => author).ToList();
+
+            SearchViewModel searchViewModel = new SearchViewModel();
+
+            searchViewModel.Users = matchedUsers;
+            searchViewModel.Books = matchedBooks;
+            searchViewModel.Authors = matchedAuthors;
+
+            return View("SearchResult", searchViewModel);
         }
 
 

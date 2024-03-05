@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace BokHemsida.Migrations
 {
     /// <inheritdoc />
-    public partial class InitMig : Migration
+    public partial class Mig : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -60,8 +62,8 @@ namespace BokHemsida.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BirthDate = table.Column<DateOnly>(type: "date", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    BirthDate = table.Column<DateOnly>(type: "date", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -202,6 +204,7 @@ namespace BokHemsida.Migrations
                     BookId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Rating = table.Column<int>(type: "int", nullable: true),
+                    Review = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateAdded = table.Column<DateOnly>(type: "date", nullable: false)
                 },
                 constraints: table =>
@@ -224,22 +227,32 @@ namespace BokHemsida.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "Firstname", "Lastname", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Private", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "1", 0, "9eeea0db-3da0-47c3-b45f-8c7291cedc30", null, false, "Glenn", "Glennartsson", false, null, null, null, "Password!", null, false, false, "22e0e446-72d8-4584-8d70-2392921f65de", false, "Glenny" });
+                values: new object[] { "1", 0, "802f69d8-c0f9-492c-8446-97f49a1a4238", null, false, "Glenn", "Glennartsson", false, null, null, null, "Password!", null, false, false, "83e8abbc-45b8-403a-8c49-6333537e7294", false, "Glenny" });
 
             migrationBuilder.InsertData(
                 table: "Authors",
                 columns: new[] { "Id", "BirthDate", "Description", "FullName" },
-                values: new object[] { 1, new DateOnly(1, 1, 1), "Brittisk författare känd för att ha skrivit Harry Potter-böckerna", "J. K. Rowling" });
+                values: new object[,]
+                {
+                    { 1, new DateOnly(1965, 7, 31), "Brittisk författare känd för att ha skrivit Harry Potter-böckerna", "J.K. Rowling" },
+                    { 2, new DateOnly(1892, 1, 3), "Fantasy-pionjär som har skrivit Sagan om Ringen-böckerna", "J.R.R Tolkien" },
+                    { 3, new DateOnly(1982, 6, 2), "Svensk författare mest känd för att ha skrivit En man som heter Ove", "Fredrik Backman" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Books",
                 columns: new[] { "Id", "AuthorId", "Description", "Title" },
-                values: new object[] { 1, 1, "Harry och hans vänner är ute på nya äventyr", "Harry Potter och fenixorden" });
+                values: new object[,]
+                {
+                    { 1, 1, "Harry och hans vänner är ute på nya äventyr", "Harry Potter och fenixorden" },
+                    { 2, 2, "Berättelsen om härskarringen", "Sagan om Ringen" },
+                    { 3, 3, "Den tredje boken i BjörnstadsTrilogin", "Vinnarna" }
+                });
 
             migrationBuilder.InsertData(
                 table: "UserBooks",
-                columns: new[] { "BookId", "UserId", "DateAdded", "Rating" },
-                values: new object[] { 1, "1", new DateOnly(2005, 1, 1), 7 });
+                columns: new[] { "BookId", "UserId", "DateAdded", "Rating", "Review" },
+                values: new object[] { 1, "1", new DateOnly(2005, 1, 1), 7, "Jag tyckte att boken var spännande" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

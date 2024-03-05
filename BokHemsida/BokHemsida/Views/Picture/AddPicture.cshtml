@@ -1,0 +1,44 @@
+﻿@* @model NewPicture
+<form asp-action="AddPicture" asp-controller="Picture" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+    <div class="row">
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Picture" class="control-label"></label>
+                <input id="pictureInput" asp-for="Picture" accept="image/*" onchange="updateSubmitButton()" />
+                <span asp-validation-for="Picture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" id="submitButton" value="Lägg till" class="btn btn-primary" disabled />
+            </div>
+        </div>
+    </div>
+</form>
+<form asp-action="RemovePicture" asp-controller="Picture" method="post">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="submit" value="Ta bort bild" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script>
+    function updateSubmitButton() {
+        var pictureInput = document.getElementById("pictureInput");
+        var submitButton = document.getElementById("submitButton");
+
+        submitButton.disabled = pictureInput.files.length === 0;
+    }
+
+    function validateForm() {
+        var pictureInput = document.getElementById("pictureInput");
+        if (pictureInput.files.length === 0) {
+            alert("Vänligen välj en bildfil.");
+            return false;
+        }
+        return true;
+    }
+</script> *@

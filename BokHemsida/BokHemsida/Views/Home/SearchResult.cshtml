@@ -1,0 +1,44 @@
+﻿@model SearchViewModel
+
+<div class="full-container">
+    @if (Model.Books.Count() > 0)
+    {
+        <h3>Matchande Böcker</h3>
+        @foreach (var book in Model.Books)
+        {
+            <div class="search-div">
+                <a asp-action="Book" asp-controller="Book">@book.Title</a>
+                <p>@book.Author.FullName</p>
+            </div>
+        }
+    }
+
+    @if (Model.Authors.Count() > 0)
+    {
+        <h3>Matchande Författare</h3>
+        @foreach (var author in Model.Authors)
+        {
+            <div class="search-div">
+                <a asp-action="Auhtor" asp-controller="Author">@author.FullName</a>
+                <p>@author.Description</p>
+            </div>
+        }
+    }
+
+    @if (Model.Users.Count() > 0)
+    {
+        <h3>Matchande Användare</h3>
+        @foreach (var user in Model.Users)
+        {
+            <div class="search-div">
+                <a asp-action="OtherProfile" asp-controller="User">@user.UserName</a>
+                <p>@user.Firstname @user.Lastname</p>
+            </div>
+        }
+    }
+
+    @if (Model.Books.Count() == 0 && Model.Authors.Count() == 0 && Model.Users.Count() == 0)
+    {
+        <h3>Inga matchande resultat</h3>
+    }
+</div>

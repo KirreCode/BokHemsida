@@ -21,7 +21,6 @@ namespace BokHemsida.Controllers
             _logger = logger;
         }
 
-        //Returnerar vyn för inlogg
         [HttpGet]
         public IActionResult LogIn()
         {
@@ -29,7 +28,13 @@ namespace BokHemsida.Controllers
             return View(logInViewModel);
         }
 
-        //Kontrollerar den angivna infortmationen mot registrerade användare så att man kan logga in
+        [HttpPost]
+        public async Task<IActionResult> LogOut()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
         [HttpPost]
         public async Task<IActionResult> LogIn(LogInViewModel logInViewModel)
         {
@@ -152,15 +157,6 @@ namespace BokHemsida.Controllers
 
             // Lösenordet uppfyller alla krav
             return true;
-        }
-
-        //Logga ut knapp, syns endast om man är inloggad
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> LogOut()
-        {
-            await signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
         }
     }
 }

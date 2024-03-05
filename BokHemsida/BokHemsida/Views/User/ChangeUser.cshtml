@@ -1,0 +1,42 @@
+﻿@model RegisterViewModel
+<div class="full-container">
+    <h2>Ändra dina uppgifter</h2>
+
+    <p>Här kan du ändra dina uppgifter</p>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <form asp-action="ChangeUser" asp-controller="User" asp-controller="User" method="post">
+        <div class="form-group row">
+            <div class="label">
+                <label asp-for="Firstname">Förnamn:</label>
+            </div>
+            <div class="">
+                <input asp-for="Firstname" type="text" class="form-control" required />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="label">
+                <label asp-for="Lastname">Efternamn:</label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Lastname" type="text" class="form-control" required />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="label">
+                <label asp-for="Username">Nytt användarnamn:</label>
+            </div>
+            <div class="">
+                <input asp-for="Username" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="form-button">
+                <button type="submit" class="btn btn-primary">Spara</button>
+            </div>
+        </div>
+        <input type="hidden" name="Password" value="@Model.Password" />
+        <input type="hidden" name="ConfirmedPassword" value="@Model.Password" />
+    </form>
+</div>

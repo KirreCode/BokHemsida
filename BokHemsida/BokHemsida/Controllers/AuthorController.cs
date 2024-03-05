@@ -26,18 +26,6 @@ namespace BokHemsida.Controllers
         public IActionResult AddAuthor()
         {
             return View();
-
-            //Book book = _context.Books.Find(id);
-            //Author author = _context.Authors.Find(id);
-            //var model = new AuthorViewModel
-            //{
-            //    BookId = book.Id,
-            //    Id = author.Id,
-            //    Fullname = author.FullName,
-            //    BirthDate = author.BirthDate,
-            //    Description = author.Description
-            //};
-            //return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> AddAuthor(Author author)

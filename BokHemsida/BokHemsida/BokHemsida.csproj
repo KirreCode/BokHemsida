@@ -22,8 +22,4 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="8.0.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Profile\" />
-  </ItemGroup>
-
 </Project>

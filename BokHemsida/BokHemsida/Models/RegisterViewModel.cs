@@ -25,6 +25,5 @@ namespace BokHemsida.Models
         [DataType(DataType.Password)]
         [Display(Name = "Bekräfta Lösenord")]
         public string ConfirmedPassword { get; set; }
-        public bool Private { get; set; }
     }
 }

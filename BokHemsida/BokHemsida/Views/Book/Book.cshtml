@@ -1,8 +1,9 @@
 ﻿@model Book
-<div>
+<div class="full-container">
     <h2>@Model.Title</h2>
     <br />
 
     <p>Författare: @Model.Author.FullName</p>
     <p>Beskrivning: @Model.Description</p>
+    <a asp-action="AddRating" asp-controller="Book" asp-route-id="@Model.Id">Lägg till din Rating</a>
 </div>

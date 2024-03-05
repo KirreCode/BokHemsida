@@ -1,52 +1,54 @@
 ﻿@model RegisterViewModel
 
-<h1>Registrera</h1>
-<div asp-validation-summary="All" class" class="text-danger"></div>
-<form method="post" asp-action="Register">
-    <div class="form-group row">
-        <div class="col-sm-2">
-            <label asp-for="Firstname">Förnamn:</label>
+<div class="full-container">
+    <h1>Registrera</h1>
+    <div asp-validation-summary="All" class" class="text-danger"></div>
+    <form method="post" asp-action="Register">
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="Firstname">Förnamn:</label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Firstname" type="text" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="Lastname">Efternamn:</label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Lastname" type="text" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label> Användarnamn: </label>
+            </div>
         </div>
         <div class="col-sm-4">
-            <input asp-for="Firstname" type="text" />
+            <input asp-for="Username" class="form-control" required />
         </div>
-    </div>
-    <div class="form-group row">
-        <div class="col-sm-2">
-            <label asp-for="Lastname">Efternamn:</label>
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label> Lösenord: </label>
+            </div>
         </div>
         <div class="col-sm-4">
-            <input asp-for="Lastname" type="text" />
+            <input asp-for="Password" class="form-control" />
         </div>
-    </div>
-    <div class="form-group row">
-        <div class="col-sm-2">
-            <label> Användarnamn: </label>
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label> Bekräfta Lösenord: </label>
+            </div>
         </div>
-    </div>
-    <div class="col-sm-4">
-        <input asp-for="Username" class="form-control" required />
-    </div>
-    <div class="form-group row">
-        <div class="col-sm-2">
-            <label> Lösenord: </label>
+        <div class="col-sm-4">
+            <input asp-for="ConfirmedPassword" class="form-control" />
         </div>
-    </div>
-    <div class="col-sm-4">
-        <input asp-for="Password" class="form-control" />
-    </div>
-    <div class="form-group row">
-        <div class="col-sm-2">
-            <label> Bekräfta Lösenord: </label>
+        <p>Ditt lösenord skall innehålla minst en stor och en liten bokstav, samt en siffra och ett specialtecken.</p>
+        <div class="form-group row">
+            <div class="offset-2 col-sm-4">
+                <button type="submit" class="btn btn-primary">Registrera </button>
+            </div>
         </div>
-    </div>
-    <div class="col-sm-4">
-        <input asp-for="ConfirmedPassword" class="form-control" />
-    </div>
-    <p>Ditt lösenord skall innehålla minst en stor och en liten bokstav, samt en siffra och ett specialtecken.</p>
-    <div class="form-group row">
-        <div class="offset-2 col-sm-4">
-            <button type="submit" class="btn btn-primary">Registrera </button>
-        </div>
-    </div>
-</form>
+    </form>
+</div>

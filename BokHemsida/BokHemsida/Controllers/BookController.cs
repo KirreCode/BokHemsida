@@ -71,7 +71,7 @@ namespace BokHemsida.Controllers
                 _context.Books.Add(book);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("MyProfile", "Profile");
+                return RedirectToAction("MyProfile", "User");
             }
             catch (Exception ex)
             {
@@ -152,6 +152,61 @@ namespace BokHemsida.Controllers
             _context.SaveChanges();
             return RedirectToAction("MyProfile", "User");
         }
+
+        public IActionResult AddRating(int id)
+        {
+            try
+            {
+                string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                RatingViewModel ratingViewModel = new RatingViewModel();
+
+                Book book = _context.Books.Find(id);
+
+                ratingViewModel.BookId = book.Id;
+                ratingViewModel.UserId = userId;
+
+                return View(ratingViewModel);
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddRating(RatingViewModel ratingViewModel)
+        {
+            Book book = _context.Books.Find(ratingViewModel.BookId);
+            UserBook userBook = new UserBook();
+            userBook.Rating = ratingViewModel.Rating;
+            userBook.UserId = ratingViewModel.UserId;
+            userBook.BookId = ratingViewModel.BookId;
+            userBook.Book = book;
+
+            if(ratingViewModel.Review != null)
+            {
+                userBook.Review = ratingViewModel.Review;
+            }
+
+            try
+            {
+                book.UserBooks.Add(userBook);
+                _context.UserBooks.Add(userBook);
+
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("AllBooks", "Book");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while creating the rating.");
+
+                ModelState.AddModelError("", "Ett fel uppstod när din rating skulle skapas i systemet.");
+            }
+
+            return View(ratingViewModel);
+        }
+
         [HttpGet]
         public IActionResult ChangeRating(int bookId)
         {
@@ -163,11 +218,11 @@ namespace BokHemsida.Controllers
         }
 
         [HttpPost]
-        public IActionResult ChangeRating(Author author)
+        public IActionResult ChangeRating(UserBook userbook)
         {
             try
             {
-                _context.Authors.Update(author);
+                _context.UserBooks.Update(userbook);
                 _context.SaveChanges();
                 return RedirectToAction("MyProfile", "User");
             }

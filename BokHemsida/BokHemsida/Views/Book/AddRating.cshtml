@@ -1,9 +1,10 @@
-﻿@model UserBook
+﻿@model RatingViewModel
 
-<div class="full-container">
-    <h3>@Model.Book.Title</h3>
+<div class="full-container">@* 
+    <h3>@Model.book.Title</h3> *@
+    <h3>@Model.UserId</h3>
     <div asp-validation-summary="All" class="text-danger"></div>
-    <form asp-controller="Book" asp-action="ChangeRating" method="post" class="form">
+    <form asp-controller="Book" asp-action="AddRating" method="post" class="form">
         <div class="form-group row">
             <label asp-for="Rating" class="">Rating av 10:</label>
             <div class="col-sm-4">
@@ -21,8 +22,7 @@
                 <input type="submit" value="Uppdatera" class="btn btn-primary" />
             </div>
         </div>
-        <input type="hidden" asp-formaction="UserId" />
-        <input type="hidden" asp-formaction="BookId" />
-        <input type="hidden" asp-formaction="DateAdded" />
+        <input type="hidden" asp-for="UserId" />
+        <input type="hidden" asp-for="BookId" />
     </form>
 </div>

@@ -7,6 +7,9 @@
         <p>Namn: @Model.Firstname @Model.Lastname</p>
         <p>Användarnamn: @Model.UserName</p>
     </div>
+    <div class="change-info-link">
+        <a asp-controller="User" asp-action="ChangeUser" asp-route-id="@Model.Id">Ändra uppgifter</a>
+    </div>
         
 
     <h2>Mina lästa böcker</h2>
@@ -18,6 +21,8 @@
                 <p>@book.Book.Title</p>
                 <p>@book.Book.Author.FullName</p>
                 <p>@book.Book.Description</p>
+                <p>Mitt betyg: @book.Rating/10</p>
+                <p>Min recension: @book.Review</p>
                 <a asp-action="ChangeBook" asp-controller="Book" asp-route-id="@book.Book.Id">Ändra bok</a>
                 @* <a asp-action="DeleteBook" asp-controller="Book" asp-route-id="@book.Book.Id">Ta bort bok från mina lästa böcker</a> *@
             </div>

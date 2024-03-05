@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Mn/rPgONFc8nBaZ0WE4QmvHGM0OQfa5Qs7o6N9xRLSU=",
+  "Hash": "Ewrw3PmhQyrr9IIIDJVhr3rwK4aGRQEcwwnLC8dJ3lo=",
   "Source": "BokHemsida",
   "BasePath": "_content/BokHemsida",
   "Mode": "Default",
@@ -55,25 +55,6 @@
       "OriginalItemSpec": "C:\\Users\\erikf\\Desktop\\BokHemsida\\BokHemsida\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BokHemsida.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\erikf\\Desktop\\BokHemsida\\BokHemsida\\wwwroot\\css\\IMG_8211.jpg",
-      "SourceId": "BokHemsida",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\erikf\\Desktop\\BokHemsida\\BokHemsida\\wwwroot\\",
-      "BasePath": "_content/BokHemsida",
-      "RelativePath": "css/IMG_8211.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\IMG_8211.jpg"
-    },
-    {
       "Identity": "C:\\Users\\erikf\\Desktop\\BokHemsida\\BokHemsida\\wwwroot\\css\\site.css",
       "SourceId": "BokHemsida",
       "SourceType": "Discovered",
@@ -110,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\erikf\\Desktop\\BokHemsida\\BokHemsida\\wwwroot\\IMG_8211.jpg",
+      "SourceId": "BokHemsida",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\erikf\\Desktop\\BokHemsida\\BokHemsida\\wwwroot\\",
+      "BasePath": "_content/BokHemsida",
+      "RelativePath": "IMG_8211.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\IMG_8211.jpg"
     },
     {
       "Identity": "C:\\Users\\erikf\\Desktop\\BokHemsida\\BokHemsida\\wwwroot\\js\\site.js",

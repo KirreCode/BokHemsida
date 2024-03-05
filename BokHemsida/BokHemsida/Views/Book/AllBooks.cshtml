@@ -9,9 +9,10 @@
                 <p>Författare: @book.Author.FullName</p>
                 <p>Beskrivning: @book.Description</p>
                 <a asp-action="ChangeBook" asp-controller="Book" asp-route-id="@book.Id">Ändra bok</a>
+                <a asp-action="AddRating" asp-controller="Book" asp-route-id="@book.Id">Lägg till recension</a>
             </div>
         }
     </div>
 
-    <a asp-action="AddBook" asp-controller="Book">Lägg till ny författare</a>
+    <a asp-action="AddBook" asp-controller="Book">Lägg till ny bok</a>
 </div>

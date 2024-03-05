@@ -5,6 +5,7 @@ namespace BokHemsida.Models
     public class UserBook
     {
         public int? Rating { get; set; }
+        public string? Review { get; set; }
         public int BookId { get; set; }
         [ForeignKey(nameof(BookId))]
         public virtual Book Book { get; set; }
