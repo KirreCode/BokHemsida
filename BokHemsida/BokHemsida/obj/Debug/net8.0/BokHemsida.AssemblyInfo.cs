@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BokHemsida")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a786ed077be200dc38540e73a792c10cc441ec6b")]
 [assembly: System.Reflection.AssemblyProductAttribute("BokHemsida")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BokHemsida")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
